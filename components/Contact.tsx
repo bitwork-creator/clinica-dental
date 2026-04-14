@@ -1,51 +1,21 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from "lucide-react";
+import { Phone, MapPin, Clock } from "lucide-react";
 
-const contactInfo = [
-  {
-    icon: Phone,
-    label: "Teléfono",
-    value: "+54 11 4567-8900",
-    href: "tel:+541145678900",
-  },
-  {
-    icon: Mail,
-    label: "Email",
-    value: "info@dentalprimerodmayo.com",
-    href: "mailto:info@dentalprimerodmayo.com",
-  },
-  {
-    icon: MapPin,
-    label: "Dirección",
-    value: "Av. Primero de Mayo 1234, Buenos Aires",
-    href: "#",
-  },
-  {
-    icon: Clock,
-    label: "Horarios",
-    value: "Lun–Vie 9:00–20:00 · Sáb 9:00–14:00",
-    href: "#",
-  },
+const hours = [
+  { days: "Lunes",     time: "9:30–14:30 · 15:00–20:00" },
+  { days: "Martes",    time: "9:30–14:30 · 15:00–20:00" },
+  { days: "Miércoles", time: "9:30–13:30 · 16:00–20:00" },
+  { days: "Jueves",    time: "9:30–14:30 · 15:00–20:00" },
+  { days: "Viernes",   time: "9:30–14:30 · 15:00–20:00" },
+  { days: "Sábado",    time: "Cerrado" },
+  { days: "Domingo",   time: "Cerrado" },
 ];
 
 export default function Contact() {
-  const [sent, setSent] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setSent(true);
-    }, 1200);
-  }
-
   return (
-    <section id="contacto" className="bg-zinc-50 py-24">
+    <section id="contacto" className="bg-white py-32">
       <div className="mx-auto max-w-6xl px-6">
         {/* Header */}
         <motion.div
@@ -55,135 +25,97 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <span className="inline-block rounded-full bg-malva-xlight px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-malva-dark">
+          <p className="text-xs font-semibold uppercase tracking-widest text-nude">
             Contacto
-          </span>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
-            Reservá tu cita hoy
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base text-zinc-500">
-            Completá el formulario o comunicate directamente con nosotros.
-            Te respondemos a la brevedad.
           </p>
+          <h2 className="mt-4 font-serif text-3xl font-bold uppercase tracking-widest text-zinc-900 sm:text-4xl">
+            Reserva tu cita
+          </h2>
         </motion.div>
 
-        <div className="mt-16 grid gap-10 lg:grid-cols-2">
-          {/* Contact info */}
+        <div className="mt-20 grid gap-12 lg:grid-cols-2 lg:items-start">
+          {/* Left column */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col gap-6"
+            className="flex flex-col gap-10"
           >
-            {contactInfo.map(({ icon: Icon, label, value, href }) => (
+            <div>
+              <p className="text-base leading-relaxed text-zinc-500">
+                La mejor forma de contactarnos es por teléfono.
+                Te atendemos personalmente.
+              </p>
+
               <a
-                key={label}
-                href={href}
-                className="group flex items-start gap-4 rounded-2xl bg-white p-5 ring-1 ring-zinc-100 hover:ring-malva-light hover:shadow-sm transition-all"
+                href="tel:+34963773633"
+                className="mt-8 flex w-full items-center justify-center gap-3 bg-zinc-900 px-8 py-5 text-sm font-semibold uppercase tracking-widest text-white hover:bg-zinc-800 transition-colors sm:w-auto sm:inline-flex"
               >
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-malva-xlight text-malva group-hover:bg-malva group-hover:text-white transition-colors">
-                  <Icon size={20} />
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-zinc-400">
-                    {label}
-                  </p>
-                  <p className="mt-0.5 text-sm font-medium text-zinc-700">
-                    {value}
-                  </p>
-                </div>
+                <Phone size={16} />
+                Llamar ahora · 963 773 633
               </a>
-            ))}
+            </div>
+
+            {/* Hours */}
+            <div>
+              <div className="mb-4 flex items-center gap-3">
+                <Clock size={16} className="text-nude shrink-0" />
+                <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
+                  Horarios de atención
+                </p>
+              </div>
+              <div className="divide-y divide-zinc-100 border border-zinc-200">
+                {hours.map(({ days, time }) => (
+                  <div
+                    key={days}
+                    className="flex items-center justify-between px-5 py-3.5"
+                  >
+                    <span className="text-sm text-zinc-600">{days}</span>
+                    <span
+                      className={`text-sm font-medium ${
+                        time === "Cerrado" ? "text-zinc-400" : "text-zinc-900"
+                      }`}
+                    >
+                      {time}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Address */}
+            <div className="flex items-start gap-3">
+              <MapPin size={16} className="text-nude shrink-0 mt-0.5" />
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
+                  Dirección
+                </p>
+                <p className="mt-1 text-sm text-zinc-600">
+                  Av. Primero de Mayo, 53 B · Valencia 46017, España
+                </p>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Form */}
+          {/* Right column — map */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6 }}
+            className="border border-zinc-200 overflow-hidden"
           >
-            {sent ? (
-              <div className="flex h-full flex-col items-center justify-center rounded-2xl bg-white p-10 ring-1 ring-zinc-100 text-center">
-                <CheckCircle size={48} className="text-malva mb-4" />
-                <h3 className="text-xl font-bold text-zinc-900">
-                  ¡Mensaje enviado!
-                </h3>
-                <p className="mt-2 text-sm text-zinc-500">
-                  Nos pondremos en contacto con vos a la brevedad para
-                  confirmar tu turno.
-                </p>
-              </div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="rounded-2xl bg-white p-8 ring-1 ring-zinc-100 flex flex-col gap-5"
-              >
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                      Nombre
-                    </label>
-                    <input
-                      required
-                      type="text"
-                      placeholder="Tu nombre"
-                      className="rounded-xl border border-zinc-200 px-4 py-3 text-sm text-zinc-800 placeholder:text-zinc-400 focus:border-malva focus:outline-none focus:ring-2 focus:ring-malva/20 transition"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                      Teléfono
-                    </label>
-                    <input
-                      type="tel"
-                      placeholder="+54 11 ..."
-                      className="rounded-xl border border-zinc-200 px-4 py-3 text-sm text-zinc-800 placeholder:text-zinc-400 focus:border-malva focus:outline-none focus:ring-2 focus:ring-malva/20 transition"
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                    Email
-                  </label>
-                  <input
-                    required
-                    type="email"
-                    placeholder="tu@email.com"
-                    className="rounded-xl border border-zinc-200 px-4 py-3 text-sm text-zinc-800 placeholder:text-zinc-400 focus:border-malva focus:outline-none focus:ring-2 focus:ring-malva/20 transition"
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                    Mensaje
-                  </label>
-                  <textarea
-                    required
-                    rows={4}
-                    placeholder="¿En qué podemos ayudarte? Contanos sobre tu consulta..."
-                    className="rounded-xl border border-zinc-200 px-4 py-3 text-sm text-zinc-800 placeholder:text-zinc-400 focus:border-malva focus:outline-none focus:ring-2 focus:ring-malva/20 transition resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-malva px-7 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-malva-dark transition-all hover:shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
-                >
-                  {loading ? (
-                    <>
-                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                      Enviando...
-                    </>
-                  ) : (
-                    <>
-                      <Send size={15} />
-                      Enviar mensaje
-                    </>
-                  )}
-                </button>
-              </form>
-            )}
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12323.519598640238!2d-0.4021445410601918!3d39.44944644577933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604f3cd02da009%3A0xdf650717639f08ed!2sCl%C3%ADnica%20Dental%20Primero%20de%20Mayo!5e0!3m2!1sen!2ses!4v1776163301464!5m2!1sen!2ses"
+              width="100%"
+              height="450"
+              style={{ border: 0, display: "block" }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Ubicación Clínica Dental Primero de Mayo"
+            />
           </motion.div>
         </div>
       </div>

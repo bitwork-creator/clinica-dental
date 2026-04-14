@@ -25,34 +25,13 @@ const testimonials = [
     rating: 5,
     text: "Llevé a mi hijo de 6 años por primera vez al dentista y salió feliz. La odontopediatra es genial con los niños. Ahora él mismo pide ir a sus controles.",
   },
-  {
-    name: "Roberto Pérez",
-    role: "Blanqueamiento",
-    initials: "RP",
-    rating: 5,
-    text: "El blanqueamiento profesional fue rápido y el cambio fue notorio desde la primera sesión. El precio es muy accesible comparado con otros lugares y la calidad es superior.",
-  },
-  {
-    name: "Ana Fernández",
-    role: "Paciente general",
-    initials: "AF",
-    rating: 5,
-    text: "Vengo hace 3 años y nunca tuve una mala experiencia. La atención es puntual, las instalaciones son modernas y siempre se nota que les importa el bienestar del paciente.",
-  },
-  {
-    name: "Diego López",
-    role: "Endodoncia",
-    initials: "DL",
-    rating: 5,
-    text: "Tenía mucho miedo de hacerme una endodoncia. El doctor fue muy empático, explicó cada paso y literalmente no sentí nada. Cambié totalmente mi perspectiva del dentista.",
-  },
 ];
 
 function Stars({ count }: { count: number }) {
   return (
     <div className="flex gap-0.5">
       {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} size={14} className="fill-malva text-malva" />
+        <Star key={i} size={13} className="fill-nude text-nude" />
       ))}
     </div>
   );
@@ -60,7 +39,7 @@ function Stars({ count }: { count: number }) {
 
 export default function Testimonials() {
   return (
-    <section id="testimonios" className="bg-white py-24">
+    <section id="testimonios" className="bg-[#faf9f7] py-32">
       <div className="mx-auto max-w-6xl px-6">
         {/* Header */}
         <motion.div
@@ -70,19 +49,19 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <span className="inline-block rounded-full bg-malva-xlight px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-malva-dark">
+          <p className="text-xs font-semibold uppercase tracking-widest text-nude">
             Testimonios
-          </span>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
+          </p>
+          <h2 className="mt-4 font-serif text-3xl font-bold uppercase tracking-widest text-zinc-900 sm:text-4xl">
             Lo que dicen nuestros pacientes
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base text-zinc-500">
+          <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-zinc-500">
             La confianza de nuestros pacientes es nuestro mayor logro.
           </p>
         </motion.div>
 
         {/* Grid */}
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
@@ -90,14 +69,14 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="flex flex-col rounded-2xl bg-zinc-50 p-6 ring-1 ring-zinc-100"
+              className="flex flex-col border border-zinc-200 bg-white p-8"
             >
               <Stars count={t.rating} />
-              <p className="mt-4 flex-1 text-sm leading-relaxed text-zinc-600">
+              <p className="mt-5 flex-1 text-sm leading-relaxed text-zinc-500">
                 &ldquo;{t.text}&rdquo;
               </p>
-              <div className="mt-6 flex items-center gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-malva text-xs font-bold text-white">
+              <div className="mt-8 flex items-center gap-3 border-t border-zinc-100 pt-6">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center bg-nude-xlight text-xs font-bold text-nude-dark">
                   {t.initials}
                 </div>
                 <div>
