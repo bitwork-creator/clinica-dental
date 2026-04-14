@@ -65,12 +65,12 @@ export default function Footer() {
           <p className="uppercase tracking-widest">
             © 2025 Clínica Dental Primero de Mayo · Diseño web por{" "}
             <a
-              href="https://bitwork.es"
+              href="https://bitwork-creator.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors underline underline-offset-2"
             >
-              Bitwork
+              Bren
             </a>
           </p>
           <p className="uppercase tracking-widest">Valencia, España</p>

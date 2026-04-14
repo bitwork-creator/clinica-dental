@@ -52,7 +52,7 @@ export default function Testimonials() {
           <p className="text-xs font-semibold uppercase tracking-widest text-nude">
             Testimonios
           </p>
-          <h2 className="mt-4 font-serif text-3xl font-bold uppercase tracking-widest text-zinc-900 sm:text-4xl">
+          <h2 className="mt-4 font-serif text-3xl font-normal uppercase tracking-widest text-zinc-900 sm:text-4xl">
             Lo que dicen nuestros pacientes
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-zinc-500">

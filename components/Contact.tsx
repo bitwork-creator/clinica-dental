@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Phone, MapPin, Clock } from "lucide-react";
 
 const hours = [
@@ -12,6 +12,23 @@ const hours = [
   { days: "Sábado",    time: "Cerrado" },
   { days: "Domingo",   time: "Cerrado" },
 ];
+
+const containerVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.1, delayChildren: 0.15 },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] } },
+};
+
+const rowVariants: Variants = {
+  hidden: { opacity: 0, x: -12 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] } },
+};
 
 export default function Contact() {
   return (
@@ -28,48 +45,58 @@ export default function Contact() {
           <p className="text-xs font-semibold uppercase tracking-widest text-nude">
             Contacto
           </p>
-          <h2 className="mt-4 font-serif text-3xl font-bold uppercase tracking-widest text-zinc-900 sm:text-4xl">
+          <h2 className="mt-4 font-serif text-3xl font-normal uppercase tracking-widest text-zinc-900 sm:text-4xl">
             Reserva tu cita
           </h2>
         </motion.div>
 
         <div className="mt-20 grid gap-12 lg:grid-cols-2 lg:items-start">
-          {/* Left column */}
+          {/* Left column — staggered */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6 }}
             className="flex flex-col gap-10"
           >
-            <div>
+            {/* Intro + CTA */}
+            <motion.div variants={itemVariants}>
               <p className="text-base leading-relaxed text-zinc-500">
                 La mejor forma de contactarnos es por teléfono.
                 Te atendemos personalmente.
               </p>
 
-              <a
+              <motion.a
                 href="tel:+34963773633"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 className="mt-8 flex w-full items-center justify-center gap-3 bg-zinc-900 px-8 py-5 text-sm font-semibold uppercase tracking-widest text-white hover:bg-zinc-800 transition-colors sm:w-auto sm:inline-flex"
               >
-                <Phone size={16} />
+                <Phone size={16} className="text-nude" />
                 Llamar ahora · 963 773 633
-              </a>
-            </div>
+              </motion.a>
+            </motion.div>
 
             {/* Hours */}
-            <div>
+            <motion.div variants={itemVariants}>
               <div className="mb-4 flex items-center gap-3">
                 <Clock size={16} className="text-nude shrink-0" />
                 <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
                   Horarios de atención
                 </p>
               </div>
-              <div className="divide-y divide-zinc-100 border border-zinc-200">
+              <motion.div
+                className="divide-y divide-zinc-100 border border-zinc-200"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-40px" }}
+              >
                 {hours.map(({ days, time }) => (
-                  <div
+                  <motion.div
                     key={days}
-                    className="flex items-center justify-between px-5 py-3.5"
+                    variants={rowVariants}
+                    className="flex items-center justify-between px-5 py-3.5 hover:bg-[#faf9f7] transition-colors duration-200"
                   >
                     <span className="text-sm text-zinc-600">{days}</span>
                     <span
@@ -79,13 +106,13 @@ export default function Contact() {
                     >
                       {time}
                     </span>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Address */}
-            <div className="flex items-start gap-3">
+            <motion.div variants={itemVariants} className="flex items-start gap-3">
               <MapPin size={16} className="text-nude shrink-0 mt-0.5" />
               <div>
                 <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
@@ -95,15 +122,15 @@ export default function Contact() {
                   Av. Primero de Mayo, 53 B · Valencia 46017, España
                 </p>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Right column — map */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
             className="border border-zinc-200 overflow-hidden"
           >
             <iframe

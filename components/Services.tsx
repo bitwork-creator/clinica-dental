@@ -2,6 +2,9 @@
 
 import { motion } from "framer-motion";
 import { Stethoscope, Smile, Shield, Sparkles, Baby, Zap } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import { useCallback, useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const services = [
   {
@@ -43,8 +46,35 @@ const services = [
 ];
 
 export default function Services() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: false,
+    align: "start",
+    dragFree: true,
+  });
+
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const update = () => {
+      setCanScrollPrev(emblaApi.canScrollPrev());
+      setCanScrollNext(emblaApi.canScrollNext());
+    };
+    emblaApi.on("select", update);
+    emblaApi.on("reInit", update);
+    update();
+    return () => {
+      emblaApi.off("select", update);
+      emblaApi.off("reInit", update);
+    };
+  }, [emblaApi]);
+
   return (
-    <section id="servicios" className="bg-white py-32">
+    <section id="servicios" className="bg-white py-32 overflow-hidden">
       <div className="mx-auto max-w-6xl px-6">
         {/* Header */}
         <motion.div
@@ -52,46 +82,97 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="text-center"
+          className="flex items-end justify-between"
         >
-          <p className="text-xs font-semibold uppercase tracking-widest text-nude">
-            Nuestros servicios
-          </p>
-          <h2 className="mt-4 font-serif text-3xl font-bold uppercase tracking-widest text-zinc-900 sm:text-4xl">
-            Todo lo que tu sonrisa necesita
-          </h2>
-          <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-zinc-500">
-            Contamos con especialistas en cada área para ofrecerte un
-            tratamiento integral, personalizado y de calidad.
-          </p>
-        </motion.div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-nude">
+              Nuestros servicios
+            </p>
+            <h2 className="mt-4 font-serif text-3xl font-normal uppercase tracking-widest text-zinc-900 sm:text-4xl">
+              Todo lo que tu sonrisa necesita
+            </h2>
+            <p className="mt-6 max-w-xl text-sm leading-relaxed text-zinc-500">
+              Contamos con especialistas en cada área para ofrecerte un
+              tratamiento integral, personalizado y de calidad.
+            </p>
+          </div>
 
-        {/* Grid */}
-        <div className="mt-20 grid gap-px bg-zinc-200 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, i) => {
-            const Icon = service.icon;
-            return (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group bg-white p-10 hover:bg-[#faf9f7] transition-colors duration-300"
-              >
-                <div className="mb-6 inline-flex h-11 w-11 items-center justify-center border border-nude-light text-nude group-hover:bg-nude group-hover:text-white group-hover:border-nude transition-colors duration-300">
-                  <Icon size={20} />
+          {/* Arrow controls — desktop */}
+          <div className="hidden shrink-0 gap-2 md:flex">
+            <button
+              onClick={scrollPrev}
+              disabled={!canScrollPrev}
+              aria-label="Anterior"
+              className="flex h-10 w-10 items-center justify-center border border-zinc-200 text-zinc-500 transition-colors hover:border-zinc-900 hover:text-zinc-900 disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              onClick={scrollNext}
+              disabled={!canScrollNext}
+              aria-label="Siguiente"
+              className="flex h-10 w-10 items-center justify-center border border-zinc-200 text-zinc-500 transition-colors hover:border-zinc-900 hover:text-zinc-900 disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Carousel — bleeds to full width */}
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.6, delay: 0.15 }}
+        className="mt-16"
+      >
+        <div ref={emblaRef} className="overflow-hidden">
+          <div className="flex ml-6 lg:ml-[calc((100vw-72rem)/2+1.5rem)] gap-px">
+            {services.map((service) => {
+              const Icon = service.icon;
+              return (
+                <div
+                  key={service.title}
+                  className="group relative flex-shrink-0 w-72 lg:w-80 bg-[#faf9f7] p-10 cursor-grab active:cursor-grabbing select-none border border-zinc-100 hover:border-nude/40 transition-colors duration-300"
+                >
+                  {/* Accent line */}
+                  <div className="absolute inset-x-0 top-0 h-0.5 bg-nude scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+
+                  <div className="mb-6 inline-flex h-11 w-11 items-center justify-center border border-nude/40 text-nude group-hover:bg-nude group-hover:text-white group-hover:border-nude transition-colors duration-300">
+                    <Icon size={20} />
+                  </div>
+                  <h3 className="font-serif text-base font-bold uppercase tracking-widest text-zinc-900">
+                    {service.title}
+                  </h3>
+                  <p className="mt-4 text-sm leading-relaxed text-zinc-500">
+                    {service.description}
+                  </p>
                 </div>
-                <h3 className="font-serif text-base font-bold uppercase tracking-widest text-zinc-900">
-                  {service.title}
-                </h3>
-                <p className="mt-4 text-sm leading-relaxed text-zinc-500">
-                  {service.description}
-                </p>
-              </motion.div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
+      </motion.div>
+
+      {/* Arrow controls — mobile */}
+      <div className="mt-8 flex justify-center gap-2 md:hidden">
+        <button
+          onClick={scrollPrev}
+          disabled={!canScrollPrev}
+          aria-label="Anterior"
+          className="flex h-10 w-10 items-center justify-center border border-zinc-200 text-zinc-500 transition-colors hover:border-zinc-900 hover:text-zinc-900 disabled:opacity-30 disabled:cursor-not-allowed"
+        >
+          <ChevronLeft size={18} />
+        </button>
+        <button
+          onClick={scrollNext}
+          disabled={!canScrollNext}
+          aria-label="Siguiente"
+          className="flex h-10 w-10 items-center justify-center border border-zinc-200 text-zinc-500 transition-colors hover:border-zinc-900 hover:text-zinc-900 disabled:opacity-30 disabled:cursor-not-allowed"
+        >
+          <ChevronRight size={18} />
+        </button>
       </div>
     </section>
   );
