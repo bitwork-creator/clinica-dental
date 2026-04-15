@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 // ─── FOTOS DE CONSULTORIO ──────────────────────────────────────────────────
@@ -28,11 +29,11 @@ export default function Clinic() {
             Nuestras instalaciones
           </p>
           <h2 className="mt-4 font-serif text-3xl font-normal uppercase tracking-widest text-zinc-900 sm:text-4xl">
-            Un espacio pensado para vos
+            Instalaciones modernas en Valencia
           </h2>
           <p className="mt-6 max-w-xl text-sm leading-relaxed text-zinc-500">
             Diseñamos cada rincón de la clínica para que te sientas cómodo y
-            en confianza desde el momento en que entrás.
+            en confianza desde tu primera visita.
           </p>
         </motion.div>
 
@@ -48,11 +49,12 @@ export default function Clinic() {
               className="group relative aspect-square overflow-hidden bg-zinc-100"
             >
               {photo.src ? (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
+                <Image
                   src={photo.src}
                   alt={photo.alt}
-                  className="h-full w-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
+                  fill
+                  className="object-cover scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
               ) : (
                 /* Placeholder — reemplazá src arriba */

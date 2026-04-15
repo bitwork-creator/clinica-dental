@@ -87,9 +87,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mt-6 font-serif text-5xl font-light leading-tight text-white sm:text-6xl lg:text-7xl"
           >
-            Tu sonrisa,{" "}
-            <em className="not-italic text-nude">nuestra</em>{" "}
-            pasión
+            Clínica Dental en Valencia · Primero de Mayo
           </motion.h1>
 
           <motion.p
@@ -98,9 +96,9 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-8 text-base leading-relaxed text-zinc-300 max-w-md"
           >
-            En Clínica Dental Primero de Mayo combinamos experiencia,
-            tecnología de vanguardia y un trato humano para que cada visita
-            sea una experiencia positiva.
+            En Clínica Dental Primero de Mayo, en el barrio de Jesús, ofrecemos
+            tratamientos dentales en Valencia con tecnología de vanguardia y un
+            trato humano para que cada visita sea una experiencia positiva.
           </motion.p>
 
           <motion.ul

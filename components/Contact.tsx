@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { Phone, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 const hours = [
   { days: "Lunes",     time: "9:30–14:30 · 15:00–20:00" },
@@ -74,6 +74,15 @@ export default function Contact() {
               >
                 <Phone size={16} className="text-nude" />
                 Llamar ahora · 963 773 633
+              </motion.a>
+              <motion.a
+                href="mailto:clinicadentalprimerodemayo@hotmail.es"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="mt-4 flex w-full items-center justify-center gap-3 border border-zinc-200 bg-white px-8 py-5 text-sm font-semibold uppercase tracking-widest text-zinc-900 hover:border-zinc-900 hover:bg-zinc-50 transition-colors sm:w-auto sm:inline-flex"
+              >
+                <Mail size={16} className="text-nude" />
+                clinicadentalprimerodemayo@hotmail.es
               </motion.a>
             </motion.div>
 

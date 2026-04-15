@@ -89,11 +89,11 @@ export default function Services() {
               Nuestros servicios
             </p>
             <h2 className="mt-4 font-serif text-3xl font-normal uppercase tracking-widest text-zinc-900 sm:text-4xl">
-              Todo lo que tu sonrisa necesita
+              Servicios dentales en Valencia
             </h2>
             <p className="mt-6 max-w-xl text-sm leading-relaxed text-zinc-500">
-              Contamos con especialistas en cada área para ofrecerte un
-              tratamiento integral, personalizado y de calidad.
+              Contamos con especialistas en cada área para ofrecer tratamientos
+              dentales en Valencia que sean integrales, personalizados y de alta calidad.
             </p>
           </div>
 
