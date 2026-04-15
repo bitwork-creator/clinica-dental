@@ -70,19 +70,19 @@ export default function Contact() {
                 href="tel:+34963773633"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="mt-8 flex w-full items-center justify-center gap-3 bg-zinc-900 px-8 py-5 text-sm font-semibold uppercase tracking-widest text-white hover:bg-zinc-800 transition-colors sm:w-auto sm:inline-flex"
+                className="mt-8 flex w-full items-center justify-center gap-3 bg-zinc-900 px-4 py-5 text-sm font-semibold uppercase tracking-widest text-white hover:bg-zinc-800 transition-colors sm:px-8 sm:w-auto sm:inline-flex"
               >
-                <Phone size={16} className="text-nude" />
-                Llamar ahora · 963 773 633
+                <Phone size={16} className="text-nude shrink-0" />
+                <span className="text-center">Llamar ahora · 963 773 633</span>
               </motion.a>
               <motion.a
                 href="mailto:clinicadentalprimerodemayo@hotmail.es"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="mt-4 flex w-full items-center justify-center gap-3 border border-zinc-200 bg-white px-8 py-5 text-sm font-semibold uppercase tracking-widest text-zinc-900 hover:border-zinc-900 hover:bg-zinc-50 transition-colors sm:w-auto sm:inline-flex"
+                className="mt-4 flex w-full items-center justify-center gap-3 border border-zinc-200 bg-white px-4 py-5 text-sm font-semibold uppercase tracking-widest text-zinc-900 hover:border-zinc-900 hover:bg-zinc-50 transition-colors sm:px-8 sm:w-auto sm:inline-flex"
               >
-                <Mail size={16} className="text-nude" />
-                clinicadentalprimerodemayo@hotmail.es
+                <Mail size={16} className="text-nude shrink-0" />
+                <span className="break-all text-center">clinicadentalprimerodemayo@hotmail.es</span>
               </motion.a>
             </motion.div>
 
@@ -109,7 +109,7 @@ export default function Contact() {
                   >
                     <span className="text-sm text-zinc-600">{days}</span>
                     <span
-                      className={`text-sm font-medium ${
+                      className={`text-sm font-medium text-right ${
                         time === "Cerrado" ? "text-zinc-400" : "text-zinc-900"
                       }`}
                     >
