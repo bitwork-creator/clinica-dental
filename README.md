@@ -1,6 +1,6 @@
-# Clínica Dental Primero de Mayo · Sitio Web
+# Clínica Dental · Sitio Web
 
-Modelo de sitio desarrollado en [Next.js](https://nextjs.org) para la Clínica Dental Primero de Mayo, Valencia. Diseñado para convertir visitas en llamadas y reservas de cita.
+Modelo de sitio desarrollado en [Next.js](https://nextjs.org) para una Clínica Dental, Valencia. Diseñado para convertir visitas en llamadas y reservas de cita.
 
 Incluye: presentación de servicios, equipo médico, galería de instalaciones, testimonios y contacto directo.
 
