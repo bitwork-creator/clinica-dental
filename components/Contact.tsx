@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion, type Variants } from "framer-motion";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { motion } from "framer-motion";
+import { Clock } from "lucide-react";
 
 const hours = [
   { days: "Lunes",     time: "9:30–14:30 · 15:00–20:00" },
@@ -13,16 +13,6 @@ const hours = [
   { days: "Sábado",    time: "Cerrado" },
   { days: "Domingo",   time: "Cerrado" },
 ];
-
-const containerVariants: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 18 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] } },
-};
 
 const serviceOptions = [
   "Revisión general",
@@ -153,76 +143,36 @@ export default function Contact() {
 
           {/* Right — contact data */}
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            className="flex flex-col gap-8"
+            transition={{ duration: 0.6 }}
           >
-            <motion.div variants={itemVariants}>
-              <div className="mb-4 flex items-center gap-3">
-                <Clock size={16} className="shrink-0 text-[#2C7A74]" />
-                <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
-                  Horarios de atención
-                </p>
-              </div>
-              <div className="divide-y divide-[#E5E0D8] border border-[#E5E0D8]">
-                {hours.map(({ days, time }) => (
-                  <div
-                    key={days}
-                    className="flex items-center justify-between px-5 py-3.5 hover:bg-[#F8F6F1] transition-colors duration-200"
-                  >
-                    <span className="text-sm text-zinc-600">{days}</span>
-                    <span
-                      className={`text-sm font-medium ${
-                        time === "Cerrado" ? "text-zinc-400" : "text-zinc-900"
-                      }`}
-                    >
-                      {time}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="flex items-start gap-3">
-              <MapPin size={16} className="mt-0.5 shrink-0 text-[#2C7A74]" />
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
-                  Dirección
-                </p>
-                <p className="mt-1 text-sm text-zinc-600">
-                  Calle Mayor, 12 · Valencia 46001, España
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div variants={itemVariants}>
-              <p className="text-base leading-relaxed text-[#6B7280]">
-                La mejor forma de contactarnos es por teléfono.
-                Te atendemos personalmente.
+            <div className="mb-4 flex items-center gap-3">
+              <Clock size={16} className="shrink-0 text-[#2C7A74]" />
+              <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
+                Horarios de atención
               </p>
-              <motion.a
-                href="tel:+34963000000"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="mt-6 flex w-full items-center justify-center gap-3 bg-zinc-900 px-4 py-5 text-sm font-semibold uppercase tracking-widest text-white hover:bg-[#1C3A38] transition-colors sm:inline-flex sm:w-auto sm:px-8"
-              >
-                <Phone size={16} className="shrink-0 text-[#2C7A74]" />
-                <span>Llamar ahora · 963 000 000</span>
-              </motion.a>
-              <motion.a
-                href="mailto:info@clinicasonrisa.es"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="mt-3 flex w-full items-center justify-center gap-3 border border-[#E5E0D8] bg-white px-4 py-5 text-sm font-semibold uppercase tracking-widest text-zinc-900 hover:border-[#2C7A74] hover:bg-[#F8F6F1] transition-colors sm:inline-flex sm:w-auto sm:px-8"
-              >
-                <Mail size={16} className="shrink-0 text-[#2C7A74]" />
-                <span>info@clinicasonrisa.es</span>
-              </motion.a>
-            </motion.div>
+            </div>
+            <div className="divide-y divide-[#E5E0D8] border border-[#E5E0D8]">
+              {hours.map(({ days, time }) => (
+                <div
+                  key={days}
+                  className="flex items-center justify-between px-5 py-3.5 hover:bg-[#F8F6F1] transition-colors duration-200"
+                >
+                  <span className="text-sm text-zinc-600">{days}</span>
+                  <span
+                    className={`text-sm font-medium ${
+                      time === "Cerrado" ? "text-zinc-400" : "text-zinc-900"
+                    }`}
+                  >
+                    {time}
+                  </span>
+                </div>
+              ))}
+            </div>
 
-            <motion.div variants={itemVariants} className="overflow-hidden rounded-xl border border-[#E5E0D8]">
+            <div className="mt-6 overflow-hidden rounded-xl border border-[#E5E0D8]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3079.611!2d-0.37634!3d39.46990!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604f4c3f3f3f3f%3A0x0!2zMznCsDI4JzExLjYiTiAwwrAyMic0Ni43Ilc!5e0!3m2!1ses!2ses!4v1234567890"
                 width="100%"
@@ -231,7 +181,7 @@ export default function Contact() {
                 loading="lazy"
                 title="Ubicación Clínica Dental Sonrisa"
               />
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>
