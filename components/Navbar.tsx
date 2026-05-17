@@ -11,55 +11,31 @@ const links = [
   { label: "Contacto", href: "#contacto" },
 ];
 
-const INSTAGRAM_URL = "#";
-
-function InstagramIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.75"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
-
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#faf9f7]/95 backdrop-blur-sm border-b border-zinc-200"
-          : "bg-transparent"
+      className={`fixed inset-x-0 top-9 z-40 transition-all duration-300 ${
+        scrolled ? "bg-white shadow-md" : "bg-black/55 backdrop-blur-sm"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        {/* Logo */}
-        <a href="#inicio" className="flex items-center gap-2">
-          <span className="font-serif text-xl font-bold tracking-widest uppercase text-zinc-900">
-            Dental
-          </span>
-          <span className="text-xl font-light tracking-widest uppercase text-nude">
-            Sonrisa
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        {/* Logo — single element */}
+        <a href="#inicio">
+          <span
+            className={`font-serif text-xl font-light tracking-widest uppercase transition-colors duration-300 ${
+              scrolled ? "text-[#1a1a1a]" : "text-white"
+            }`}
+          >
+            SONRISA
           </span>
         </a>
 
@@ -69,7 +45,11 @@ export default function Navbar() {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="text-xs font-medium uppercase tracking-widest text-zinc-500 hover:text-zinc-900 transition-colors"
+                className={`text-xs font-medium uppercase tracking-widest transition-colors duration-300 ${
+                  scrolled
+                    ? "text-zinc-500 hover:text-[#1a1a1a]"
+                    : "text-white/80 hover:text-white"
+                }`}
               >
                 {l.label}
               </a>
@@ -77,20 +57,15 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Right actions */}
-        <div className="hidden md:flex items-center gap-4">
-          <a
-            href={INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            className="text-zinc-400 hover:text-nude transition-colors"
-          >
-            <InstagramIcon size={18} />
-          </a>
+        {/* CTA */}
+        <div className="hidden md:flex items-center">
           <a
             href="#contacto"
-            className="border border-zinc-900 px-6 py-2.5 text-xs font-semibold uppercase tracking-widest text-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors"
+            className={`px-6 py-2.5 text-xs font-semibold uppercase tracking-widest transition-colors duration-300 ${
+              scrolled
+                ? "bg-[#2C5F5D] text-white hover:bg-[#1C3A38]"
+                : "border border-white text-white hover:bg-white hover:text-[#1C3A38]"
+            }`}
           >
             Reservar cita
           </a>
@@ -98,7 +73,9 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden p-2 text-zinc-700 hover:text-nude transition-colors"
+          className={`md:hidden p-2 transition-colors ${
+            scrolled ? "text-zinc-700" : "text-white"
+          }`}
           onClick={() => setOpen(!open)}
           aria-label="Menú"
         >
@@ -108,35 +85,24 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#faf9f7] border-t border-zinc-200 px-6 py-6 flex flex-col gap-5">
+        <div className="md:hidden border-t border-zinc-200 bg-white px-6 py-6 flex flex-col gap-5">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="text-xs font-medium uppercase tracking-widest text-zinc-600 hover:text-zinc-900 transition-colors"
+              className="text-xs font-medium uppercase tracking-widest text-zinc-600 hover:text-[#1C3A38] transition-colors"
             >
               {l.label}
             </a>
           ))}
-          <div className="flex items-center gap-4 mt-2">
-            <a
-              href="#contacto"
-              onClick={() => setOpen(false)}
-              className="flex-1 inline-flex justify-center border border-zinc-900 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors"
-            >
-              Reservar cita
-            </a>
-            <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="text-zinc-400 hover:text-nude transition-colors"
-            >
-              <InstagramIcon size={20} />
-            </a>
-          </div>
+          <a
+            href="#contacto"
+            onClick={() => setOpen(false)}
+            className="inline-flex justify-center bg-[#2C5F5D] px-6 py-3 text-xs font-semibold uppercase tracking-widest text-white hover:bg-[#1C3A38] transition-colors"
+          >
+            Reservar cita
+          </a>
         </div>
       )}
     </header>

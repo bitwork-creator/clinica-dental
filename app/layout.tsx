@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -15,21 +9,22 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Clínica Dental Sonrisa | Valencia",
+  title: "Clínica Dental Sonrisa | Dentista en Valencia Centro",
   description:
-    "Clínica Dental en Valencia. Tratamientos de ortodoncia, implantes, estética dental y odontopediatría en Clínica Dental Sonrisa.",
+    "Clínica dental en Valencia centro. Ortodoncia, implantes, estética dental y odontopediatría. Primera consulta gratuita.",
   keywords: [
     "clínica dental Valencia",
-    "dentista Valencia",
+    "dentista Valencia centro",
     "Clínica Dental Sonrisa",
     "ortodoncia Valencia",
     "implantes Valencia",
     "estética dental Valencia",
+    "odontopediatría Valencia",
   ],
   openGraph: {
-    title: "Clínica Dental Sonrisa | Valencia",
+    title: "Clínica Dental Sonrisa | Dentista en Valencia Centro",
     description:
-      "Clínica dental en Valencia. Tratamientos dentales profesionales con equipo experto y tecnología avanzada.",
+      "Clínica dental en Valencia centro. Ortodoncia, implantes, estética dental y odontopediatría. Primera consulta gratuita.",
     type: "website",
     locale: "es_ES",
   },
@@ -43,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${playfair.variable} ${dmSans.variable} h-full antialiased overflow-x-hidden`}
+      className={`${dmSans.variable} h-full antialiased overflow-x-hidden`}
     >
       <body className="min-h-full flex flex-col overflow-x-hidden">{children}</body>
     </html>
