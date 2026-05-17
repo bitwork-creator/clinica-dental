@@ -46,14 +46,14 @@ export default function Footer() {
           <p className="text-white/50 uppercase tracking-widest">
             Diseño web por{" "}
             <a
-              href="https://bitwork-creator.vercel.app/"
+              href="https://www.delsur-digital.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-2 hover:text-white transition-colors"
             >
               Bren
             </a>
-            {" "}· bitwork-creator.vercel.app
+            {" "}· https://www.delsur-digital.com/
           </p>
           <p className="uppercase tracking-widest">
             © 2025 Clínica Dental Sonrisa · Valencia
