@@ -160,31 +160,6 @@ export default function Contact() {
             className="flex flex-col gap-8"
           >
             <motion.div variants={itemVariants}>
-              <p className="text-base leading-relaxed text-[#6B7280]">
-                La mejor forma de contactarnos es por teléfono.
-                Te atendemos personalmente.
-              </p>
-              <motion.a
-                href="tel:+34963000000"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="mt-6 flex w-full items-center justify-center gap-3 bg-zinc-900 px-4 py-5 text-sm font-semibold uppercase tracking-widest text-white hover:bg-[#1C3A38] transition-colors sm:inline-flex sm:w-auto sm:px-8"
-              >
-                <Phone size={16} className="shrink-0 text-[#2C7A74]" />
-                <span>Llamar ahora · 963 000 000</span>
-              </motion.a>
-              <motion.a
-                href="mailto:info@clinicasonrisa.es"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="mt-3 flex w-full items-center justify-center gap-3 border border-[#E5E0D8] bg-white px-4 py-5 text-sm font-semibold uppercase tracking-widest text-zinc-900 hover:border-[#2C7A74] hover:bg-[#F8F6F1] transition-colors sm:inline-flex sm:w-auto sm:px-8"
-              >
-                <Mail size={16} className="shrink-0 text-[#2C7A74]" />
-                <span>info@clinicasonrisa.es</span>
-              </motion.a>
-            </motion.div>
-
-            <motion.div variants={itemVariants}>
               <div className="mb-4 flex items-center gap-3">
                 <Clock size={16} className="shrink-0 text-[#2C7A74]" />
                 <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
@@ -220,6 +195,31 @@ export default function Contact() {
                   Calle Mayor, 12 · Valencia 46001, España
                 </p>
               </div>
+            </motion.div>
+
+            <motion.div variants={itemVariants}>
+              <p className="text-base leading-relaxed text-[#6B7280]">
+                La mejor forma de contactarnos es por teléfono.
+                Te atendemos personalmente.
+              </p>
+              <motion.a
+                href="tel:+34963000000"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="mt-6 flex w-full items-center justify-center gap-3 bg-zinc-900 px-4 py-5 text-sm font-semibold uppercase tracking-widest text-white hover:bg-[#1C3A38] transition-colors sm:inline-flex sm:w-auto sm:px-8"
+              >
+                <Phone size={16} className="shrink-0 text-[#2C7A74]" />
+                <span>Llamar ahora · 963 000 000</span>
+              </motion.a>
+              <motion.a
+                href="mailto:info@clinicasonrisa.es"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="mt-3 flex w-full items-center justify-center gap-3 border border-[#E5E0D8] bg-white px-4 py-5 text-sm font-semibold uppercase tracking-widest text-zinc-900 hover:border-[#2C7A74] hover:bg-[#F8F6F1] transition-colors sm:inline-flex sm:w-auto sm:px-8"
+              >
+                <Mail size={16} className="shrink-0 text-[#2C7A74]" />
+                <span>info@clinicasonrisa.es</span>
+              </motion.a>
             </motion.div>
 
             <motion.div variants={itemVariants} className="overflow-hidden rounded-xl border border-[#E5E0D8]">
