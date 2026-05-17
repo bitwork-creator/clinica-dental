@@ -62,13 +62,14 @@ export default function Contact() {
           <div className="mx-auto mt-4 h-0.5 w-10 bg-[#2C7A74]" />
         </motion.div>
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:items-start">
+        <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-start">
           {/* Left — form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="flex flex-col h-full"
           >
             {submitted ? (
               <div className="flex flex-col items-center justify-center py-20 text-center">
@@ -90,7 +91,7 @@ export default function Contact() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                 <input
                   type="text"
                   required
@@ -118,7 +119,7 @@ export default function Contact() {
                   ))}
                 </select>
                 <textarea
-                  rows={3}
+                  rows={5}
                   placeholder="¿Alguna preferencia de horario o algo que debamos saber?"
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
@@ -130,6 +131,22 @@ export default function Contact() {
                 >
                   Enviar solicitud
                 </button>
+
+                <div className="mt-6 border-t border-[#E5E0D8] pt-6 flex flex-col gap-3">
+                  {[
+                    "Primera consulta gratuita — sin compromiso",
+                    "Respondemos en menos de 24h",
+                    "Financiación sin intereses disponible",
+                  ].map((text) => (
+                    <div key={text} className="flex items-center gap-2.5">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="shrink-0">
+                        <circle cx="8" cy="8" r="8" fill="#EAF5F4" />
+                        <path d="M5 8l2 2 4-4" stroke="#2C7A74" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span className="text-sm text-gray-500">{text}</span>
+                    </div>
+                  ))}
+                </div>
               </form>
             )}
           </motion.div>
@@ -205,11 +222,11 @@ export default function Contact() {
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="overflow-hidden border border-[#E5E0D8]">
+            <motion.div variants={itemVariants} className="overflow-hidden rounded-xl border border-[#E5E0D8]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3079.611!2d-0.37634!3d39.46990!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604f4c3f3f3f3f%3A0x0!2zMznCsDI4JzExLjYiTiAwwrAyMic0Ni43Ilc!5e0!3m2!1ses!2ses!4v1234567890"
                 width="100%"
-                height="250"
+                height="280"
                 style={{ border: 0, display: "block" }}
                 loading="lazy"
                 title="Ubicación Clínica Dental Sonrisa"
