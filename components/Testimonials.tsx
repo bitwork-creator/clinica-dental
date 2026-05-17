@@ -5,23 +5,23 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Laura Martínez",
+    name: "A. Morales",
     role: "Paciente de ortodoncia",
-    initials: "LM",
+    initials: "AM",
     rating: 5,
     text: "Increíble experiencia desde el primer momento. El equipo es muy profesional y amable. Terminé mi tratamiento de ortodoncia en el tiempo previsto y el resultado superó mis expectativas.",
   },
   {
-    name: "Carlos Sánchez",
+    name: "J. Fernández",
     role: "Implante dental",
-    initials: "CS",
+    initials: "JF",
     rating: 5,
     text: "Me realizaron dos implantes y quedé maravillado. El procedimiento fue indoloro y el seguimiento post-operatorio fue impecable. Ya no recuerdo cómo era vivir sin esos dientes.",
   },
   {
-    name: "María González",
+    name: "P. Torres",
     role: "Mamá de paciente",
-    initials: "MG",
+    initials: "PT",
     rating: 5,
     text: "Llevé a mi hijo de 6 años por primera vez al dentista y salió feliz. La odontopediatra es genial con los niños. Ahora él mismo pide ir a sus controles.",
   },

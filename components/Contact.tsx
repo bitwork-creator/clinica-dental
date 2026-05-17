@@ -67,22 +67,22 @@ export default function Contact() {
               </p>
 
               <motion.a
-                href="tel:+34963773633"
+                href="tel:+34963000000"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="mt-8 flex w-full items-center justify-center gap-3 bg-zinc-900 px-4 py-5 text-sm font-semibold uppercase tracking-widest text-white hover:bg-zinc-800 transition-colors sm:px-8 sm:w-auto sm:inline-flex"
               >
                 <Phone size={16} className="text-nude shrink-0" />
-                <span className="text-center">Llamar ahora · 963 773 633</span>
+                <span className="text-center">Llamar ahora · 963 000 000</span>
               </motion.a>
               <motion.a
-                href="mailto:clinicadentalprimerodemayo@hotmail.es"
+                href="mailto:info@clinicasonrisa.es"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="mt-4 flex w-full items-center justify-center gap-3 border border-zinc-200 bg-white px-4 py-5 text-sm font-semibold uppercase tracking-widest text-zinc-900 hover:border-zinc-900 hover:bg-zinc-50 transition-colors sm:px-8 sm:w-auto sm:inline-flex"
               >
                 <Mail size={16} className="text-nude shrink-0" />
-                <span className="break-all text-center">clinicadentalprimerodemayo@hotmail.es</span>
+                <span className="break-all text-center">info@clinicasonrisa.es</span>
               </motion.a>
             </motion.div>
 
@@ -128,13 +128,13 @@ export default function Contact() {
                   Dirección
                 </p>
                 <p className="mt-1 text-sm text-zinc-600">
-                  Av. Primero de Mayo, 53 B · Valencia 46017, España
+                  Calle Mayor, 12 · Valencia 46001, España
                 </p>
               </div>
             </motion.div>
           </motion.div>
 
-          {/* Right column — map */}
+          {/* Right column — map placeholder */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -142,16 +142,19 @@ export default function Contact() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="border border-zinc-200 overflow-hidden"
           >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12323.519598640238!2d-0.4021445410601918!3d39.44944644577933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604f3cd02da009%3A0xdf650717639f08ed!2sCl%C3%ADnica%20Dental%20Primero%20de%20Mayo!5e0!3m2!1sen!2ses!4v1776163301464!5m2!1sen!2ses"
-              width="100%"
-              height="450"
-              style={{ border: 0, display: "block" }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Ubicación Clínica Dental Primero de Mayo"
-            />
+            <div className="flex h-[450px] w-full flex-col items-center justify-center gap-5 bg-zinc-50">
+              <div className="flex h-14 w-14 items-center justify-center border border-nude/40 text-nude">
+                <MapPin size={28} />
+              </div>
+              <div className="text-center px-6">
+                <p className="font-serif text-base font-bold uppercase tracking-widest text-zinc-900">
+                  Clínica Dental Sonrisa
+                </p>
+                <p className="mt-2 text-sm text-zinc-500">
+                  Calle Mayor, 12 · Valencia 46001
+                </p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

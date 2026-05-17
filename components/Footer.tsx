@@ -1,4 +1,4 @@
-const INSTAGRAM_URL = "https://www.instagram.com/clinicadental_primerodemayo/";
+const INSTAGRAM_URL = "#";
 
 function InstagramIcon({ size = 18 }: { size?: number }) {
   return (
@@ -28,10 +28,10 @@ export default function Footer() {
         <div className="flex flex-col items-center gap-6 text-center sm:flex-row sm:justify-between sm:text-left">
           <div>
             <p className="font-serif text-base font-bold uppercase tracking-widest text-white">
-              Clínica Dental Primero de Mayo
+              Clínica Dental Sonrisa
             </p>
             <p className="mt-1.5 text-xs uppercase tracking-widest">
-              Av. Primero de Mayo, 53 B · Valencia 46017
+              Calle Mayor, 12 · Valencia 46001
             </p>
           </div>
 
@@ -63,14 +63,14 @@ export default function Footer() {
 
         <div className="mt-10 border-t border-zinc-800 pt-10 flex flex-col items-center gap-2 text-center text-xs sm:flex-row sm:justify-between">
           <p className="uppercase tracking-widest">
-            © 2025 Clínica Dental Primero de Mayo · Diseño web por{" "}
+            © 2025 Clínica Dental Sonrisa · Diseño web por{" "}
             <a
               href="https://bitwork-creator.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors underline underline-offset-2"
             >
-              Bren
+              DELSUR
             </a>
           </p>
           <p className="uppercase tracking-widest">Valencia, España</p>

@@ -5,28 +5,28 @@ import Image from "next/image";
 
 const team = [
   {
-    name: "Dra. Eva Ijeilat",
+    name: "Dra. Ana García",
     specialty: "Odontología General",
     years: 18,
-    photo: "/fotos/IMG_6334 2.jpg",
+    photo: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80",
   },
   {
-    name: "Dra. Nombre Apellido",
-    specialty: "Odontología General",
+    name: "Dra. Laura Pérez",
+    specialty: "Ortodoncia",
     years: 12,
-    photo: "/fotos/IMG_6335 2.jpg",
+    photo: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&q=80",
   },
   {
-    name: "Dra. Nombre Apellido2",
-    specialty: "Odontología General",
+    name: "Dra. Isabel Romero",
+    specialty: "Implantología",
     years: 9,
-    photo: "/fotos/IMG_6339 2.jpg",
+    photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80",
   },
   {
-    name: "Dr. Nombre Apellido",
-    specialty: "Odontología General",
+    name: "Dr. Carlos Molina",
+    specialty: "Estética Dental",
     years: 7,
-    photo: "/fotos/IMG_6360.jpg",
+    photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=600&q=80",
   },
 ];
 

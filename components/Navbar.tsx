@@ -11,7 +11,7 @@ const links = [
   { label: "Contacto", href: "#contacto" },
 ];
 
-const INSTAGRAM_URL = "https://www.instagram.com/clinicadental_primerodemayo/";
+const INSTAGRAM_URL = "#";
 
 function InstagramIcon({ size = 18 }: { size?: number }) {
   return (
@@ -59,7 +59,7 @@ export default function Navbar() {
             Dental
           </span>
           <span className="text-xl font-light tracking-widest uppercase text-nude">
-            Primero de Mayo
+            Sonrisa
           </span>
         </a>
 

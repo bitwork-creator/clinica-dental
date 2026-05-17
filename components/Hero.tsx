@@ -8,19 +8,19 @@ import { useCallback, useEffect, useState } from "react";
 
 const slides = [
   {
-    image: "/fotos/IMG_6342.webp",
+    image: "https://images.unsplash.com/photo-1588776814546-1ffbb172e16a?auto=format&fit=crop&w=1600&q=80",
     label: "Clínica de confianza",
   },
   {
-    image: "/fotos/IMG_6340 2.jpg",
+    image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1600&q=80",
     label: "Tecnología de vanguardia",
   },
   {
-    image: "/fotos/IMG_6359.jpg",
+    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1600&q=80",
     label: "Atención personalizada",
   },
   {
-    image: "/fotos/IMG_6339 2.jpg",
+    image: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=1600&q=80",
     label: "Más de 15 años de experiencia",
   },
 ];
@@ -82,7 +82,7 @@ export default function Hero() {
           </motion.p>
 
           <h1 className="mt-6 font-serif text-5xl font-light leading-tight text-white sm:text-6xl lg:text-7xl">
-            Clínica Dental en Valencia · Primero de Mayo
+            Clínica Dental en Valencia · Sonrisa
           </h1>
 
           <motion.p
@@ -91,9 +91,9 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-8 text-base leading-relaxed text-zinc-300 max-w-md"
           >
-            En Clínica Dental Primero de Mayo, en el barrio de Jesús, ofrecemos
-            tratamientos dentales en Valencia con tecnología de vanguardia y un
-            trato humano para que cada visita sea una experiencia positiva.
+            En Clínica Dental Sonrisa ofrecemos tratamientos dentales en Valencia
+            con tecnología de vanguardia y un trato humano para que cada visita
+            sea una experiencia positiva.
           </motion.p>
 
           <motion.ul

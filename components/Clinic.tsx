@@ -7,10 +7,10 @@ import { motion } from "framer-motion";
 // Agregá tus fotos a /public/fotos/ y reemplazá las rutas vacías abajo.
 // Ejemplo: "/fotos/consultorio-01.webp"
 const clinicPhotos = [
-  { src: "/fotos/IMG_6357.jpg", alt: "Sala de espera" },
-  { src: "/fotos/IMG_6358.jpg", alt: "Consultorio principal" },
-  { src: "/fotos/IMG_6359.jpg", alt: "Equipamiento" },
-  { src: "/fotos/IMG_6360.jpg", alt: "Área de recepción" },
+  { src: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=800&q=80", alt: "Sala de espera" },
+  { src: "https://images.unsplash.com/photo-1535133929-9e05bdef1ec5?auto=format&fit=crop&w=800&q=80", alt: "Consultorio principal" },
+  { src: "https://images.unsplash.com/photo-1588776814546-1ffbb172e16a?auto=format&fit=crop&w=800&q=80", alt: "Equipamiento" },
+  { src: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80", alt: "Área de recepción" },
 ];
 // ──────────────────────────────────────────────────────────────────────────
 

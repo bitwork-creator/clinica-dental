@@ -15,21 +15,21 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Clínica Dental Primero de Mayo | Valencia",
+  title: "Clínica Dental Sonrisa | Valencia",
   description:
-    "Clínica Dental en Valencia, barrio de Jesús. Tratamientos de ortodoncia, implantes, estética dental y odontopediatría en Primero de Mayo.",
+    "Clínica Dental en Valencia. Tratamientos de ortodoncia, implantes, estética dental y odontopediatría en Clínica Dental Sonrisa.",
   keywords: [
     "clínica dental Valencia",
-    "dentista Valencia Jesús",
-    "Primero de Mayo dental",
+    "dentista Valencia",
+    "Clínica Dental Sonrisa",
     "ortodoncia Valencia",
     "implantes Valencia",
     "estética dental Valencia",
   ],
   openGraph: {
-    title: "Clínica Dental Primero de Mayo | Valencia",
+    title: "Clínica Dental Sonrisa | Valencia",
     description:
-      "Clínica dental en el barrio de Jesús, Valencia. Tratamientos dentales profesionales con equipo experto y tecnología avanzada.",
+      "Clínica dental en Valencia. Tratamientos dentales profesionales con equipo experto y tecnología avanzada.",
     type: "website",
     locale: "es_ES",
   },
